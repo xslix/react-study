@@ -1,19 +1,7 @@
-import * as React from 'react'
-import {Post} from './Post'
-import {PostList} from './PostList'
-import {Route, Switch} from 'react-router'
-import {BrowserRouter as Router} from 'react-router-dom'
-import {render} from 'react-dom'
+/* eslint-env node */
 
-function App() {
-	return (
-		<Router>
-			<Switch>
-				<Route component={Post} path="/:id" />
-				<Route component={PostList} path="/" />
-			</Switch>
-		</Router>
-	)
-}
+import * as React from 'react'
+import {App} from './App'
+import {render} from 'react-dom'
 
 render(<App />, document.getElementById('root'))
