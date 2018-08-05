@@ -21,6 +21,7 @@
   "homepage": "https://github.com/XaveScor/react-study#readme",
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.56",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.56",
     "@babel/preset-env": "^7.0.0-beta.56",
     "@babel/preset-react": "^7.0.0-beta.56",
     "babel-eslint": "^8.2.6",
