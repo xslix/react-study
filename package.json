@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/XaveScor/react-study/issues"
   },
-  "homepage": "https://github.com/XaveScor/react-study#readme"
+  "homepage": "https://github.com/XaveScor/react-study#readme",
+  "devDependencies": {
+    "path": "^0.12.7",
+    "webpack": "^4.16.4",
+    "webpack-cli": "^3.1.0"
+  }
 }
