@@ -19,6 +19,9 @@
   },
   "homepage": "https://github.com/XaveScor/react-study#readme",
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.56",
+    "@babel/preset-env": "^7.0.0-beta.56",
+    "babel-loader": "^8.0.0-beta.4",
     "html-webpack-plugin": "^3.2.0",
     "path": "^0.12.7",
     "webpack": "^4.16.4",
