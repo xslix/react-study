@@ -1,6 +1,7 @@
 import * as React from 'react'
 import {Link} from 'react-router-dom'
 import {getPosts} from './api'
+import {withLoading} from './hocs/withLoading'
 
 function PostItem({post}) {
 	const link = `/${post.id}`
@@ -11,34 +12,17 @@ function PostItem({post}) {
 	)
 }
 
-export class PostList extends React.PureComponent {
-	state = {
-		posts: null,
-	}
+const PostList_ = ({loadingData: posts}) => (
+	<div>
+		<ul>
+			{posts.map(post => (
+				<PostItem key={post.id} post={post} />
+			))}
+		</ul>
+	</div>
+)
 
-	componentDidMount() {
-		this.loadData()
-	}
+const Loading = () => <div>Загрузка списка...</div>
+const Fail = () => <div>Ошибка загрузки.</div>
 
-	async loadData() {
-		const posts = await getPosts()
-		this.setState({
-			posts,
-		})
-	}
-
-	render() {
-		const {posts} = this.state
-		if (posts === null) {
-			return 'Loading...'
-		}
-
-		return (
-			<ul>
-				{posts.map(post => (
-					<PostItem key={post.id} post={post} />
-				))}
-			</ul>
-		)
-	}
-}
+export const PostList = withLoading(getPosts, Loading, Fail)(PostList_)

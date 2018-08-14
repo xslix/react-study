@@ -2,44 +2,24 @@ import * as React from 'react'
 import {Link} from 'react-router-dom'
 import {compose, withProps} from 'recompose'
 import {getPost} from './api'
+import {withLoading} from './hocs/withLoading'
 
-class Post_ extends React.PureComponent {
-	state = {
-		post: null,
-	}
+const Post_ = ({loadingData: {title, body}}) => (
+	<div>
+		<h1>{title}</h1>
+		<p>{body}</p>
+		<p>
+			<Link to="/">Go to List</Link>
+		</p>
+	</div>
+)
 
-	componentDidMount() {
-		this.loadData()
-	}
-
-	async loadData() {
-		const {id} = this.props
-		const post = await getPost(id)
-		this.setState({
-			post,
-		})
-	}
-
-	render() {
-		const {post} = this.state
-		if (post === null) {
-			return 'Loading...'
-		}
-
-		return (
-			<>
-				<h1>{post.title}</h1>
-				<p>{post.body}</p>
-				<p>
-					<Link to="/">Go to list</Link>
-				</p>
-			</>
-		)
-	}
-}
+const Loading = () => <div>Загрузка поста</div>
+const Fail = () => <div>Ошибка загрузки</div>
 
 export const Post = compose(
 	withProps(props => ({
 		id: props.match.params.id,
 	})),
+	withLoading(props => getPost(props.id), Loading, Fail),
 )(Post_)
